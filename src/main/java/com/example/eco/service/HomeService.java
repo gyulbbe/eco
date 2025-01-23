@@ -22,6 +22,7 @@ public class HomeService {
         Map<String, String> result = response.getBody();
         byte[] decodedImg = Base64.getDecoder().decode(result.get("img"));
         String textData = result.get("text");
+
         return new DataDto(decodedImg, textData);
     }
 }
