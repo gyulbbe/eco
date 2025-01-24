@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class EcoRestAdvice {
     @ExceptionHandler(EcoException.class)
     public ResponseEntity<RestResponseDto<String>> handleEcoException(EcoException e) {
-        log.error("error: " + e);
         RestResponseDto<String> restResponseDto = RestResponseDto.fail(e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(restResponseDto);
     }
