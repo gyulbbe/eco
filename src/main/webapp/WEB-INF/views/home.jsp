@@ -130,15 +130,15 @@
         const encodedName = encodeURIComponent(name.trim());
         const response = await fetch('proxy?encodedName=' + encodedName);
         const result = await response.json();
-        const data = result.data
         if (result.status === 200) {
+            const data = result.data
             $('#call-img').attr('src', 'data:image/png;base64,' + data.imageData);
             $('#phrase').text(data.textData);
             $('#delete-btn').removeClass('d-none');
             $('#call-btn').addClass('d-none');
         } else {
             $('#call-img').attr('src', '');
-            $('#phrase').text('2차 면접자중 일치하는 이름이 아닙니다.');
+            $('#phrase').text(result.message);
         }
     })
 

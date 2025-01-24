@@ -1,6 +1,7 @@
 package com.example.eco.service;
 
 import com.example.eco.dto.DataDto;
+import com.example.eco.exception.EcoException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,8 +21,15 @@ public class HomeService {
 
         // 응답 데이터 처리
         Map<String, String> result = response.getBody();
-        byte[] decodedImg = Base64.getDecoder().decode(result.get("img"));
+
+        // 존재하지 않는 이름인 경우
+        if (result.containsKey("ERROR")) {
+            throw new EcoException(result.get("ERROR"));
+        }
+
+        // 존재하는 이름인 경우
         String textData = result.get("text");
+        byte[] decodedImg = Base64.getDecoder().decode(result.get("img"));
 
         return new DataDto(decodedImg, textData);
     }
