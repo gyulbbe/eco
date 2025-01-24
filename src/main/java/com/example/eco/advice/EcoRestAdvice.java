@@ -12,6 +12,6 @@ public class EcoRestAdvice {
     @ExceptionHandler(EcoException.class)
     public ResponseEntity<RestResponseDto<String>> handleEcoException(EcoException e) {
         RestResponseDto<String> restResponseDto = RestResponseDto.fail(e.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(restResponseDto);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(restResponseDto);
     }
 }
