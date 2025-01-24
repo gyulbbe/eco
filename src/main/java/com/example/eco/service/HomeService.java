@@ -17,7 +17,7 @@ public class HomeService {
         String url = "http://121.130.28.118:8080/BTLMS/ALPAS_TEST.do?name=" + encodedName;
 
         // 응답
-        ResponseEntity<Map<String, String>> response = restTemplate.getForEntity(url, Map.class);
+        ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
 
         // 응답 데이터 처리
         Map<String, String> result = response.getBody();
