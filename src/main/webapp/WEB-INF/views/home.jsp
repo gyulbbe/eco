@@ -23,7 +23,10 @@
         <div class="col-3 text-end">
             <div class="d-flex align-items-center justify-content-end">
                 <img src="../resources/logo.jpg" alt="로고">
-                <p id="current-time" class="ms-2 mb-0"></p>
+                <div>
+                    <p id="current-date" class="ms-2 mb-0 text-nowrap"></p>
+                    <p id="current-time" class="ms-2 mb-0 text-nowrap"></p>
+                </div>
             </div>
         </div>
     </div>
@@ -119,9 +122,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script>
-    <%-- 페이지에 접속한 시간 표시 --%>
+    <%-- 페이지에 접속한 날짜, 시간 표시 --%>
     $(document).ready(function () {
-        $('#current-time').text(new Date().toLocaleTimeString('ko-KR'));
+        $('#current-date').text(new Intl.DateTimeFormat('ko-KR', {
+            dateStyle: 'full'
+        }).format(new Date()));
+        $('#current-time').text(new Intl.DateTimeFormat('ko-KR', {
+            timeStyle: 'short'
+        }).format(new Date()).replace(':', '시 ') + '분');
     })
 
     <%-- 호출 버튼 --%>
