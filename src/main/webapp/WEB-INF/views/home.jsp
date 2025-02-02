@@ -140,6 +140,7 @@
         const result = await response.json();
         if (result.status === 200) {
             const data = result.data
+            console.log('data.imageData: ', data.imageData);
             $('#call-img').attr('src', 'data:image/png;base64,' + data.imageData);
             $('#phrase').text(data.textData);
             $('#delete-btn').removeClass('d-none');

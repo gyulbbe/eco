@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Base64;
 import java.util.Map;
 
 @Service
@@ -34,7 +33,7 @@ public class HomeService {
 
         // 존재하는 이름인 경우
         String textData = result.get("text");
-        byte[] decodedImg = Base64.getDecoder().decode(result.get("img"));
+        String decodedImg = result.get("img");
 
         return new DataDto(decodedImg, textData);
     }

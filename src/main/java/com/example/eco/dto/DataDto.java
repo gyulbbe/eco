@@ -10,6 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DataDto {
-    private byte[] imageData;
+    private String imageData;
     private String textData;
 }
